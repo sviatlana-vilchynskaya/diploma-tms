@@ -18,7 +18,7 @@ const ButtonStyle = ({ palette }) => ({
   icon: {
     width: '1em',
     height: '1em',
-    fill: 'currentColor',
+    color: palette.primary.main,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

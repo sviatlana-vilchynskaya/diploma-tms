@@ -3,18 +3,14 @@ import { createUseStyles } from 'react-jss';
 const ContentStyle = ({ palette, typography }) => ({
   content: {
     backgroundColor: palette.background.cart,
-    borderRadius: '7px',
+    borderRadius: '4px',
     padding: '15px',
     width: '260px',
     height: '160px',
-    margin: '0',
+    marginBlockEnd: '15px',
+    marginRight: '15px',
     flexWrap: 'wrap',
-  },
-
-  content_wrap: {
-    width: '870px',
-    margin: '0',
-    display: 'flex',
+    boxShadow: '0 0 3px rgba(0,0,0,0.3)',
   },
 
   wrap: {
@@ -41,6 +37,7 @@ const ContentStyle = ({ palette, typography }) => ({
   product__text: {
     display: 'flex',
     flexDirection: 'column',
+    color: palette.common.black,
   },
   product__description: {
     paddingTop: '5px',
@@ -48,7 +45,10 @@ const ContentStyle = ({ palette, typography }) => ({
     display: 'inline-block',
     maxWidth: '130px',
     maxHeight: '90px',
-    overflow: 'hidden',
+    overflowY: 'hidden',
+    '&:hover': {
+      overflowY: 'auto',
+    }
   },
   product__price: {
     display: 'flex',

@@ -5,8 +5,8 @@ const lightTheme = {
       white: '#ffffff',
     },
     primary: {
-      main: '#ff8b38',
-      dark: '#b44d0c',
+      main: '#00d1b2',
+      dark: '#3273dc',
     },
     secondary: {
       main: '#d8d8d8',
@@ -35,8 +35,8 @@ const lightTheme = {
       divider: 'rgba(0, 0, 0, 0.12)',
     },
     background: {
-      default: '#d8d8d8',
-      header: '#252525',
+      default: '#dff3ea',
+      header: '#00d1b2',
       cart: '#ffffff',
     },
   },

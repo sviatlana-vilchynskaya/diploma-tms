@@ -6,8 +6,3 @@ export const END_LOADER = 'END_LOADER';
 
 export const ADD_PRODUCTS = 'ADD_PRODUCTS';
 export const GET_DATA = 'GET_DATA';
-export const CURRENCY_PRODUCTS = 'CURRENCY_PRODUCTS';
-export const CHANGE_PRICE = 'CHANGE_PRICE';
-
-export const SORT_ASC = 'SORT_ASC';
-export const SORT_DESC = 'SORT_DESC';

@@ -39,27 +39,32 @@ const Header = ({ basket, products }) => {
     setModalActive(false);
   };
 
-  const { count, amount, productsID } = basket;
+  const { count, productsID } = basket;
   const basketProduct = products.filter((item) => productsID.includes(item.id));
 
   return (
     <header className={classes.Header__block}>
       <div className="container row">
         <div className={classes.Header__container}>
-          <div><a href="#" onClick={handleClick} className={classes.header__logo}>Beans Love Beers</a></div>
-          <ThemeSwitcher />
-          <div>Home</div>
-          <Basket onClick={openModal} count={count} amount={amount} />
-          <Modal display={modalActive} onClick={closeModal}>
-            {basketProduct.length
-              ? basketProduct.map((item) => (
-                <BasketCart
-                  key={item.id}
-                  product={item}
-                />
-              ))
-              : (<div className={classes.basket_text}>Basket is empty &#128524;</div>)}
-          </Modal>
+          <div className={classes.block}>
+            <a href="#" onClick={handleClick} className={classes.header__logo}>Beans Love Beers</a>
+          </div>
+
+          <div className={classes.block}>
+            <ThemeSwitcher />
+            <div href="#" onClick={handleClick} className={classes.element}>Home</div>
+            <Basket onClick={openModal} count={count} />
+            <Modal display={modalActive} onClick={closeModal}>
+              {basketProduct.length
+                ? basketProduct.map((item) => (
+                  <BasketCart
+                    key={item.id}
+                    product={item}
+                  />
+                ))
+                : (<div className={classes.basket_text}>You have not selected your favorite product.&#128524;</div>)}
+            </Modal>
+          </div>
         </div>
       </div>
     </header>
@@ -72,7 +77,6 @@ Header.displayName = 'Header';
 Header.propTypes = {
   basket: shape({
     count: number.isRequired,
-    amount: number.isRequired,
   }).isRequired,
   products: array.isRequired,
 };

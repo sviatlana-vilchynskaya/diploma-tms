@@ -9,10 +9,11 @@ import {
   Route,
 } from 'react-router-dom';
 
+//components
 import Cart from './Cart';
 import Content from './Content';
-import MainBodyHeader from './MainBodyHeader';
 
+// styles
 import useStyles from '../styles/components/MainBody';
 
 
@@ -22,8 +23,7 @@ const MainBody = (props) => {
 
   return (
     <div className={classes.MainBody}>
-      <main className="products container">
-        <MainBodyHeader />
+      <main className={classes.container}>
         <Switch>
           <Route path="/" exact>
             {props.products.map((product) => (
@@ -53,7 +53,6 @@ const mapStateToProps = (state) => ({
 MainBody.propTypes = {
   products: array.isRequired,
 };
-
 
 export default compose(
   connect(mapStateToProps),

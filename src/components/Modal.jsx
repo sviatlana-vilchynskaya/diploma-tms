@@ -9,10 +9,9 @@ const Modal = ({ onClick, children }) => {
 
   return (
     <>
-      <div role="document" className={classes.modal_background}>
+      <div role="document" onClick={onClick} className={classes.modal_background}>
         <div className={classes.modal_root}>
-          <a href="#" className={classes.close_btn} onClick={onClick}>×</a>
-          <p className={classes.modal_rootText}>Basket</p>
+          <p className={classes.modal_rootText}>Favorites</p>
           {children}
         </div>
       </div>

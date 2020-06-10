@@ -13,9 +13,6 @@ const AppStyle = ({ palette }) => ({
     maxWidth: '900px',
     margin: '0 auto',
   },
-  row: {
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
+
 });
 export default createUseStyles(AppStyle);
