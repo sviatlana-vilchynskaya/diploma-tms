@@ -9,8 +9,6 @@ const globalStyles = (theme) => ({
   body: {
     overflow: 'auto',
     background: theme.palette.background.default,
-
-
   },
 
   a: {
@@ -19,7 +17,7 @@ const globalStyles = (theme) => ({
   },
 
   '.container': {
-    maxWidth: '901px',
+    maxWidth: '900px',
     margin: '0 auto',
     width: '100%',
   },
@@ -33,6 +31,7 @@ const globalStyles = (theme) => ({
     fontWeight: theme.typography.fontWeightMedium,
     padding: '15px',
   },
+
   img: {
     height: '100%',
     width: '100%',

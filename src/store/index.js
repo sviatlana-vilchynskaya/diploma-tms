@@ -9,11 +9,11 @@ import rootSagas from '../sagas';
 
 const composeEnhancers = composeWithDevTools({});
 
-
 export const store = createStore(
   reducers,
   composeEnhancers(middleware),
 );
+
 sagaMiddleware.run(rootSagas);
 
 export const persistor = persistStore(store);

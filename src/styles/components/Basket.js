@@ -2,27 +2,34 @@ import { createUseStyles } from 'react-jss';
 
 const BasketStyle = ({ palette, typography }) => ({
   basket__count: {
-    fontSize: typography.fontSizeSmall,
-    fontWeight: typography.fontWeightRegular,
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
     minWidth: '15px',
     height: '15px',
-    color: palette.common.white,
-    background: palette.primary.main,
-    transform: 'translateY(-7px)',
-    borderRadius: '50%',
-  },
-  basket__amount: {
-    fontSize: typography.fontSizeSmall,
-    textTransform: 'lowercase',
-    color: '#c1c1c2',
+    fill: 'currentColor',
     cursor: 'pointer',
   },
-  basket__amount_sum: {
-    fontSize: typography.fontSizeSmall,
+  icon: {
+    width: '1em',
+    height: '1em',
+    fill: 'currentColor',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     cursor: 'pointer',
+    opacity: '1',
+    '&:hover': {
+      opacity: '0.8',
+    },
   },
+
+  count: {
+    display: 'inline-flex',
+    fontWeight: typography.fontWeightRegular,
+    textTransform: typography.fontSizeSmall,
+    color: 'black',
+  },
+
 });
 export default createUseStyles(BasketStyle);

@@ -1,7 +1,6 @@
 import React from 'react';
 import { object } from 'prop-types';
-// Helpers
-import viewNumber from '../helpers/viewNumber';
+
 // Styles
 import useStyles from '../styles/components/BasketCart';
 // Components
@@ -9,7 +8,6 @@ import Button from './Button';
 
 
 const BasketCart = ({ product }) => {
-
   const classes = useStyles();
 
   return (
@@ -26,6 +24,7 @@ const BasketCart = ({ product }) => {
               dangerouslySetInnerHTML={{ __html: product.description }}
             />
           </div>
+          <Button product={product} />
         </div>
       </div>
     </>

@@ -10,7 +10,6 @@ export default {
       const newState = { ...state, productsID: [...state.productsID] };
       newState.productsID.push(payload.productsID);
       newState.count += 1;
-      newState.amount += payload.priceValue;
       return newState;
     },
     [removeFromBasket]: (state, { payload = defaultPayload }) => {
@@ -19,9 +18,7 @@ export default {
         (productsID) => productsID !== payload.productsID,
       );
       newState.count -= 1;
-      newState.amount -= payload.priceValue;
       return newState;
     },
-    [changeAmount]: (state, { payload = 0 }) => ({ ...state, amount: payload }),
   }, basketState),
 };

@@ -4,6 +4,14 @@ const MainBodyStyle = ({ palette }) => ({
   MainBody: {
   },
 
+  container: {
+    flexWrap: 'wrap',
+    display: 'flex',
+    maxWidth: '900px',
+    justifyContent: 'center',
+    margin: '0 auto',
+  },
+
   LastChild: {
     paddingBottom: '15px',
   },

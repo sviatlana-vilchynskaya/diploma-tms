@@ -10,6 +10,7 @@ import { getData } from '../actions';
 // Components
 import Loader from './Loader';
 import Header from './Header';
+import Search from './Search'
 import MainBody from './MainBody';
 
 // styles
@@ -30,6 +31,7 @@ const App = (props) => {
     <div className={classes.root}>
       <Loader display={load} />
       <Header />
+      <Search />
       <MainBody />
     </div>
   );

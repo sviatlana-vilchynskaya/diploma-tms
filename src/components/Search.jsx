@@ -18,7 +18,7 @@ const Search = ({ searchProducts, ...props }) => {
   return (
     <form>
       <div className={classes.inputWrap}>
-        <input className={classes.input} onInput={handleInput} id="search"  type="text" placeholder="Search for beer..."/>
+        <input className={classes.input} onInput={handleInput} id="search" type="text" placeholder="Search for beer..." />
         <button className={classes.button}>Search</button>
       </div>
     </form>

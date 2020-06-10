@@ -36,6 +36,10 @@ const BasketCartStyle = ({ palette }) => ({
     paddingTop: '20px',
     fontSize: '12px',
     color: palette.common.black,
+    overflowY: 'hidden',
+    '&:hover': {
+      overflowY: 'auto',
+    }
   },
   product__price: {
     display: 'flex',
