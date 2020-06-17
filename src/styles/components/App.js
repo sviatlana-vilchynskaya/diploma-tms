@@ -13,6 +13,5 @@ const AppStyle = ({ palette }) => ({
     maxWidth: '900px',
     margin: '0 auto',
   },
-
 });
 export default createUseStyles(AppStyle);

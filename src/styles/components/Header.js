@@ -1,6 +1,6 @@
 import { createUseStyles } from 'react-jss';
 
-const HeaderStyle = ({ palette, typography }) => ({
+const HeaderStyle = ({ palette }) => ({
   Header__block: {
     width: '100%',
     background: palette.background.header,
@@ -13,6 +13,8 @@ const HeaderStyle = ({ palette, typography }) => ({
     marginLeft: '-16px',
     cursor: 'pointer',
     opacity: '1',
+    textDecoration: 'none',
+    color: palette.common.white,
     '&:hover': {
       opacity: '0.8',
     },
@@ -26,24 +28,12 @@ const HeaderStyle = ({ palette, typography }) => ({
     color: palette.common.white,
   },
 
-  header__logo: {
-    color: palette.common.white,
-    fontSize: typography.fontSizeLarge,
-    fontWeight: typography.fontWeightLight,
-  },
-
-  basket_text: {
-    color: palette.common.black,
-    padding: '20px',
-    textAlign: 'center',
-  },
-
   block: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     textAlign: 'center',
-  }
+  },
 });
 
 export default createUseStyles(HeaderStyle);

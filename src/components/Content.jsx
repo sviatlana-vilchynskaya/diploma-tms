@@ -1,44 +1,68 @@
 import React from 'react';
-import { object } from 'prop-types';
-import { useHistory } from 'react-router-dom';
+import { array } from 'prop-types';
+import { compose } from 'redux';
+import { Link } from 'react-router-dom';
+// Hooks
+import { connect } from 'react-redux';
 // components
 import Button from './Button';
-
+import NoResultErr from './NoResultErr';
 // style
 import useStyles from '../styles/components/Content';
 
 
-const Content = ({ product }) => {
+const Content = ({ beers = [] }) => {
   const classes = useStyles();
-  const history = useHistory();
 
-  const handleClick = (event) => {
-    event.preventDefault();
-    history.push(`/${product.id}`);
-  };
+
+  if (!beers.length) {
+    return (
+      <NoResultErr />
+    );
+  }
 
   return (
-    <div id="Content" className={classes.content}>
-      <div className={classes.wrap}>
-        <div className={classes.img}>
-          <img src={product.image_url} alt="" />
-        </div>
-        <div className={classes.title}>
-          <a onClick={handleClick} className={classes.product__text} href="#">{product.name}</a>
-          <p className={classes.product__description} dangerouslySetInnerHTML={{ __html: product.description }} />
-        </div>
-        <div>
-          <Button product={product} />
-        </div>
+    <>
+      <div className={classes.Root}>
+        {beers.map((beer) => (
+          <div id="Content" className={classes.content} key={beer.id}>
+            <div className={classes.wrap}>
+              <div className={classes.img}>
+                <img src={beer.image_url} alt={beer.name} />
+              </div>
+              <div className={classes.title}>
+                <Link to={`/beer/${beer.id}`}>
+                  <p className={classes.product__text}>{beer.name}</p>
+                </Link>
+                <p
+                  className={classes.product__description}
+                  dangerouslySetInnerHTML={{ __html: beer.description }}
+                />
+              </div>
+              <div>
+                <Button beer={beer} />
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
-    </div>
-
+    </>
   );
 };
 
 Content.displayName = 'Content';
 
+const mapStateToProps = (state) => ({
+  beers: state.beers,
+});
+
 Content.propTypes = {
-  product: object.isRequired,
+  beers: array.isRequired,
 };
-export default Content;
+
+
+export default compose(
+  connect(
+    mapStateToProps,
+  ),
+)(Content);

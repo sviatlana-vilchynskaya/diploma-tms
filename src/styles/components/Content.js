@@ -1,16 +1,44 @@
 import { createUseStyles } from 'react-jss';
 
 const ContentStyle = ({ palette, typography }) => ({
+  Root: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, minmax(30.3%, 1fr))',
+    gridColumnGap: '20px',
+    gridRowGap: '20px',
+    padding: '20px 0',
+  },
+  root_cart: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(30.3%, 1fr))',
+    gridColumnGap: '10px',
+    gridRowGap: '10px',
+    paddingTop: '20px',
+  },
+  content_cart: {
+    backgroundColor: palette.background.cart,
+    borderRadius: '4px',
+    width: '260px',
+    height: '160px',
+    flexWrap: 'wrap',
+    boxShadow: '0 0 3px rgba(0,0,0,0.3)',
+    gridTemplateColumns: '1fr',
+    gridColumnGap: 'unset',
+    gridRowGap: 'unset',
+    padding: '15px',
+    marginLeft: '15px',
+  },
   content: {
     backgroundColor: palette.background.cart,
     borderRadius: '4px',
-    padding: '15px',
     width: '260px',
     height: '160px',
-    marginBlockEnd: '15px',
-    marginRight: '15px',
     flexWrap: 'wrap',
     boxShadow: '0 0 3px rgba(0,0,0,0.3)',
+    gridTemplateColumns: '1fr',
+    gridColumnGap: 'unset',
+    gridRowGap: 'unset',
+    padding: '15px',
   },
 
   wrap: {
@@ -25,14 +53,14 @@ const ContentStyle = ({ palette, typography }) => ({
     width: '150px',
     paddingTop: '10px',
     fontSize: typography.fontSizeNormal,
-    marginLeft: '40px',
+    marginLeft: '15px',
 
   },
   img: {
-    height: '80px',
-    width: '50px',
+    height: '100px',
+    width: '60px',
     objectFit: 'contain',
-    alignItems: 'center',
+    marginTop: '10px',
   },
   product__text: {
     display: 'flex',
@@ -42,13 +70,15 @@ const ContentStyle = ({ palette, typography }) => ({
   product__description: {
     paddingTop: '5px',
     fontSize: typography.fontSizeNormal,
-    display: 'inline-block',
-    maxWidth: '130px',
-    maxHeight: '90px',
-    overflowY: 'hidden',
+    display: '-webkit-box',
+    maxWidth: '200px',
+    '-webkit-line-clamp': '5',
+    '-webkit-box-orient': 'vertical',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
     '&:hover': {
       overflowY: 'auto',
-    }
+    },
   },
   product__price: {
     display: 'flex',

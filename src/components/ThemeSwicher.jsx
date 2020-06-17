@@ -6,7 +6,6 @@ import { connect, useSelector } from 'react-redux';
 import { switchTheme } from '../actions';
 
 
-// eslint-disable-next-line no-shadow
 const ThemeSwitcher = ({ switchTheme }) => {
   const isChecked = useSelector((state) => state.app.checked);
 

@@ -1,8 +1,6 @@
 import { createUseStyles } from 'react-jss';
 
 const MainBodyStyle = ({ palette }) => ({
-  MainBody: {
-  },
 
   container: {
     flexWrap: 'wrap',

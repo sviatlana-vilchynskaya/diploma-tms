@@ -1,42 +1,53 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { func, array } from 'prop-types';
-
+import React, { useState } from 'react';
+import { object } from 'prop-types';
+// Hooks
+import { useDispatch } from 'react-redux';
+import { withRouter } from 'react-router';
+// styles
 import useStyles from '../styles/components/Searsh';
+// actions
+import { searchBeers } from '../actions';
 
-import { searchProducts } from '../actions';
 
-// eslint-disable-next-line no-shadow
-const Search = ({ searchProducts, ...props }) => {
+const Search = ({ history }) => {
   const classes = useStyles();
+
+  const dispatch = useDispatch();
+
+  const [value, setValue] = useState('');
 
   const handleInput = (event) => {
     event.preventDefault();
-    searchProducts({ productsOrigin: props.productsOrigin, searchString: event.target.value });
+    setValue(event.target.value);
   };
 
+  const handleSearch = (event) => {
+    event.preventDefault();
+
+    if (value === '') {
+      history.push('/');
+      dispatch(searchBeers(value));
+    } else if (value !== '') {
+      history.push('/search');
+      dispatch(searchBeers(value));
+    }
+  };
+
+
   return (
-    <form>
+    <form onSubmit={handleSearch}>
       <div className={classes.inputWrap}>
-        <input className={classes.input} onInput={handleInput} id="search" type="text" placeholder="Search for beer..." />
-        <button className={classes.button}>Search</button>
+        <input className={classes.input} onChange={handleInput} id="search" type="text" placeholder="Search for beer..." value={value} />
+        <button type="submit" className={classes.button}>Search</button>
       </div>
     </form>
   );
 };
 
-const mapDispatchToProps = {
-  searchProducts,
-};
-
-const mapStateToProps = (state) => ({
-  productsOrigin: state.productsOrigin,
-
-});
+Search.displayName = 'Search';
 
 Search.propTypes = {
-  productsOrigin: array,
-  searchProducts: func.isRequired,
+  history: object.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default withRouter(Search);

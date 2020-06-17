@@ -1,58 +1,55 @@
 import React from 'react';
-import { array } from 'prop-types';
+import { Route, Switch } from 'react-router-dom';
 
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 
-import {
-  Switch,
-  Route,
-} from 'react-router-dom';
-
-//components
-import Cart from './Cart';
+// Components
 import Content from './Content';
+import FavouriteBeers from './FavouriteBeers';
+import Cart from './Cart';
+import Search from './Search';
 
 // styles
 import useStyles from '../styles/components/MainBody';
 
 
-
-const MainBody = (props) => {
+const MainBody = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.MainBody}>
-      <main className={classes.container}>
-        <Switch>
-          <Route path="/" exact>
-            {props.products.map((product) => (
-              <div>
-                <Content
-                  key={product.id}
-                  product={product}
-                />
-              </div>
-            ))}
-          </Route>
-          <Route path="/:id">
-            <Cart
-              products={props.products}
-            />
-          </Route>
-        </Switch>
-      </main>
-    </div>
+
+    <main className={classes.container}>
+      <Switch>
+        <Route path="/" exact>
+          <div>
+            <Search />
+            <Content />
+          </div>
+        </Route>
+
+        <Route path="/search">
+          <Search />
+          <Content />
+        </Route>
+
+        <Route path="/favourites">
+          <FavouriteBeers />
+        </Route>
+
+        <Route path="/beer/:id">
+          <Cart />
+        </Route>
+      </Switch>
+    </main>
   );
 };
-
 const mapStateToProps = (state) => ({
-  products: state.products.current,
+  beers: state.beers,
 });
 
-MainBody.propTypes = {
-  products: array.isRequired,
-};
+
+MainBody.displayName = 'MainBody';
 
 export default compose(
   connect(mapStateToProps),

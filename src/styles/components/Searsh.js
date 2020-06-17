@@ -7,7 +7,7 @@ const SearchStyle = ({ typography, palette }) => ({
     borderStyle: 'none',
     borderRadius: '4px 0 0 4px',
     fontSize: typography.fontSizeNormal,
-    paddingLeft: '5px',
+    padding: '10px',
   },
   button: {
     width: '70px',
@@ -23,7 +23,6 @@ const SearchStyle = ({ typography, palette }) => ({
     color: palette.common.white,
   },
   inputWrap: {
-    marginBlockEnd: '20px',
     top: '0',
     left: '0',
     display: 'flex',

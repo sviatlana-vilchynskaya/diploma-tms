@@ -1,53 +1,74 @@
 import React, { useState, useEffect } from 'react';
+import { compose } from 'redux';
 import { array, object } from 'prop-types';
+// hooks
+import { connect } from 'react-redux';
 
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 // components
 import Button from './Button';
 // styles
-import useStyles from '../styles/components/Cart';
+import useStyles from '../styles/components/Content';
 
 
-const Cart = ({ products, ...props }) => {
+const Cart = ({ beers = [], ...props }) => {
   const classes = useStyles();
-  const [product = {}, setProduct] = useState({ price: {} });
+  const [beer, setBeer] = useState({});
 
   const params = useParams();
 
   useEffect(() => {
-    const { id } = params;
+    const { id } = params || {};
 
-    if (products.length && id) {
-      const stateProduct = products.find((item) => item.id === id);
+    if (beers.length && id) {
+      const stateBeer = beers.find((item) => item.id === +id);
 
-      setProduct(stateProduct);
-    } else if (props.product) {
-      setProduct(props.product);
+      setBeer(stateBeer);
+    } else if (props.beer) {
+      setBeer(props.beer);
     }
-  }, []);
+  }, [params]);
 
 
   return (
-    <div id="Cart" className={classes.content}>
-      <div className={classes.wrap}>
-        <div className={classes.img}>
-          <img src={product.image_url} alt="" />
-        </div>
-        <div className={classes.title}>
-          <a className={classes.product__text} href="#">{product.name}</a>
-          <p className={classes.product__description} dangerouslySetInnerHTML={{ __html: product.description }} />
-        </div>
-        <div>
-           <Button product={product} />
+    <>
+      <div className={classes.root_cart}>
+        <div id="Cart" className={classes.content_cart}>
+          <div className={classes.wrap}>
+            <div className={classes.img}>
+              <img src={beer.image_url} alt={beer.name} />
+            </div>
+            <div className={classes.title}>
+              <Link to={`/beer/${beer.id}`}>
+                <p className={classes.product__text}>{beer.name}</p>
+              </Link>
+              <p
+                className={classes.product__description}
+                dangerouslySetInnerHTML={{ __html: beer.description }}
+              />
+            </div>
+            <div>
+              <Button beer={beer} />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
 Cart.displayName = 'Cart';
 
+const mapStateToProps = (state) => ({
+  beers: state.beers,
+});
+
 Cart.propTypes = {
-  products: array.isRequired,
+  beers: array.isRequired,
+  beer: object.isRequired,
 };
-export default Cart;
+export default compose(
+  connect(
+    mapStateToProps,
+  ),
+)(Cart);

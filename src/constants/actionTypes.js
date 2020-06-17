@@ -1,8 +1,8 @@
-export const ADD_TO_BASKET = 'ADD_TO_BASKET';
-export const REMOVE_FROM_BASKET = 'REMOVE_FROM_BASKET';
+export const ADD_TO_FAVOURITE = 'ADD_TO_FAVOURITE';
+export const REMOVE_FROM_FAVOURITE = 'REMOVE_FROM_FAVOURITE';
 
 export const START_LOADER = 'START_LOADER';
 export const END_LOADER = 'END_LOADER';
 
-export const ADD_PRODUCTS = 'ADD_PRODUCTS';
-export const GET_DATA = 'GET_DATA';
+export const SET_BEERS = 'SET_BEERS';
+export const GET_BEERS = 'GET_BEERS';

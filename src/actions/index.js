@@ -1,4 +1,4 @@
-export * from './basketAction';
+export * from './favouriteAction';
 export * from './loadAction';
-export * from './productAction';
+export * from './beersAction';
 export * from './appAction';

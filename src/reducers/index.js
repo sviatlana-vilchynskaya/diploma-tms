@@ -2,23 +2,25 @@ import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import basketReducer from './basketReducer';
+import favouriteReducer from './favouriteReducer';
 import loadReducer from './loadReducer';
-import productsReducer from './productReducer';
+import beersReducer from './beersReducer';
 import appReducers from './appReducers';
+
 
 const reducers = persistReducer({
   key: 'root',
   storage,
   whitelist: [
-    'basket',
+    'favourite',
+    'beers',
   ],
 
 },
 combineReducers({
-  ...basketReducer,
+  ...favouriteReducer,
   ...loadReducer,
-  ...productsReducer,
+  ...beersReducer,
   ...appReducers,
 }));
 
